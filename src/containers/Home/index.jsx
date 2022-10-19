@@ -7,44 +7,61 @@ gsap.registerPlugin(PixiPlugin, MotionPathPlugin, ScrollTrigger);
 
 const Home = () => {
   const ref = useRef(null);
-  gsap.defaults({ ease: "none", duration: 2 });
-  const tl = gsap.timeline();
+  const name = "Maaz Ahmed";
+  let nameArray = name.split("");
+
+  console.log(nameArray);
+  // gsap.defaults({ ease: "none", duration: 2 });
+
   useEffect(() => {
+    const tl = gsap.timeline();
     const el = ref.current;
-    // tl.from(".green", { xPercent: -100 })
-    //   .from(".red", { xPercent: 100 })
-    //   .from(".orange", { yPercent: -100 });
-    ScrollTrigger.create({
-      animation: tl,
-      trigger: ".container",
-      start: "top top",
-      end:"+=4000",
-    //   pinSpacing:false,
-      scrub: true,
-    //   markers:true,
-      pin: true,
-      anticipatePin: 1,
+    tl.to(".heading", {
+      duration: 1,
+      scale: 1,
+      opacity: 1,
+      // y: 100,
+      // ease: "",
+      stagger: 0.1,
     });
-    // gsap.to(el, {
-    //   scrollTrigger: {
-    //     trigger: ".heading1",
-    //     start: "-100px center",
-    //     end:"100px center",
-    //     markers: true,
-    //     toggleActions:"play resume none none",
-    //     scrub:2
-    //   },
-    //   rotate:360 ,
-    //   duration: 4,
-    // });
+    tl.to(".line", {
+      duration: 1,
+      x: 0,
+      opacity: 1,
+      ease: "bounce",
+      stagger: 0.1,
+    });
+    tl.to(".line2", {
+      duration: 1,
+      x: 0,
+      opacity: 1,
+      ease: "bounce",
+      stagger: 0.1,
+    });
   }, []);
 
   return (
     <div className="container">
-      <div className="height blue">1</div>
+      <div className="box">
+        <div className="line2"></div>
+        <div className="inner-box">
+          {nameArray.map((item, i) => (
+            <h1
+              key={i}
+              style={item === " " ? { width: "20px" } : {}}
+              className="heading"
+              ref={ref}
+            >
+              {item === " " ? " " : item}
+            </h1>
+          ))}
+        </div>
+        <div className="line"></div>
+      </div>
+      {/* <div className="height blue">1</div>
       <div className="height green">2</div>
       <div className="height orange">3</div>
-      <div className="height red">4</div>
+      <div className="height red">4</div> */}
       {/* <div className="height">
         <h1 className="title">Learning GSAP</h1>
       </div>
