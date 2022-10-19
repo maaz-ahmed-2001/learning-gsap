@@ -11,17 +11,17 @@ const Home = () => {
   const tl = gsap.timeline();
   useEffect(() => {
     const el = ref.current;
-    tl.from(".green", { xPercent: -100 })
-      .from(".red", { xPercent: 100 })
-      .from(".orange", { yPercent: -100 });
+    // tl.from(".green", { xPercent: -100 })
+    //   .from(".red", { xPercent: 100 })
+    //   .from(".orange", { yPercent: -100 });
     ScrollTrigger.create({
       animation: tl,
       trigger: ".container",
       start: "top top",
       end:"+=4000",
-      pinSpacing:false,
+    //   pinSpacing:false,
       scrub: true,
-      markers:true,
+    //   markers:true,
       pin: true,
       anticipatePin: 1,
     });
